@@ -1,0 +1,263 @@
+* {
+    padding: 10;
+    margin: 0;
+    box-sizing:content-box;
+}
+
+:root {
+    --soft-linen-white: #F5F5DC;
+    --light-misty-blue: #E0F7FA;
+    --lavender: #D6C8E2;
+    --blush-pink: #E8B4BC;
+    --soft-spring-green: #A8D5BA;
+    --pale-sky-blue: #B0C4DE;
+    --muted-clay: #D4A373;
+    --warm-taupe: #A49380;
+    --deep-forest-green: #2C5234;
+    --charcoal-grey: #4A4A48;
+  }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, var(--charcoal-grey), var(--deep-forest-green));
+    color: var(--warm-taupe);
+}
+
+header {
+    background-color: var(--deep-forest-green); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    flex-wrap: nowrap;
+}
+
+.logo a {
+    color: var(--muted-clay); 
+    font-size: 40px;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: var(--warm-taupe); 
+    text-decoration: none;
+    font-size: 15px;
+    padding: 20px 30px;
+    transition: color 0.3s ease;
+}
+
+/* When you hover over the about, projects etc the colour */
+nav ul li a:hover {
+    color: var(--pale-sky-blue); 
+}
+
+/* All Things dropdown*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--soft-spring-green);
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: var(--charcoal-grey);
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* hover causes dropdown, is there a better way to do this?*/
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover { /*dropdown colour, update later to look better*/
+    background-color: var(--muted-clay);
+    color: var(--pale-sky-blue);
+}
+
+
+.card {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    width: 300px;
+    height: auto;
+    background-color: var(--soft-spring-green);
+    color: black;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: left 0.5s ease, opacity 0.5s ease;
+    transform: translateY(-50%);
+    /* transform: scale(0); /* Initially hides my card 
+    transition: transform 0.5s ease, opacity 0.5s ease; */
+    opacity: 0;
+    z-index: 1;
+}
+
+.hover-trigger:hover + .card {
+    transform: scale(1);
+    opacity: 100;
+}
+
+.card-content {
+    text-align: left;  
+}
+
+.card-content p {
+    margin: 0;
+    padding: 5px;
+}
+
+.image-card {
+    position:relative;
+    width: 100%;
+    max-width: 600px; 
+    height: 400px;
+    margin: 60px auto; /* Center the card */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hover-text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: var(--charcoal-grey);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    opacity: 1;
+    pointer-events: none;
+}
+/* .arrow {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: black;
+    opacity: 1;
+} */
+
+
+/* .image-card:hover .image-wrapper img { 
+    opacity: 50%;
+} */
+
+.info-content {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: var(--blush-pink);
+    color: var(--charcoal-grey);
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: center;
+    
+}
+
+.info-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.info-content p {
+    font-size: 1.2rem; 
+}
+
+.image-card:hover .info-content {
+    opacity: 1; 
+}
+
+
+
+/* Tabs */
+@media (max-width: 1200px) {
+    .header-container {
+        padding: 15px; 
+    }
+    .image-card {
+        max-width: 80%;
+    }
+
+    .info-content {
+        font-size: 1.1rem;
+    }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    nav ul {
+      flex-direction: column;
+      gap: 5px; 
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        box-shadow: none;
+        background-color: var(--soft-spring-green);
+    }
+
+    .image-card {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .info-content {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}
